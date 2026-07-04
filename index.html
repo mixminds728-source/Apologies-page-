@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>For You ❤️</title>
+<style>
+body{
+    font-family: Arial;
+    background:#ffe6f2;
+    text-align:center;
+    padding-top:80px;
+}
+.card{
+    width:90%;
+    max-width:500px;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 0 15px rgba(0,0,0,.2);
+}
+button{
+    padding:12px 25px;
+    margin:10px;
+    font-size:18px;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+}
+.yes{background:#4CAF50;color:white;}
+.no{background:#ff4d4d;color:white;}
+</style>
+</head>
+
+<body>
+
+<div class="card" id="box">
+<h2>Hi 😊</h2>
+
+<div id="step1">
+<p>What's your name?</p>
+<input id="name" placeholder="Enter your name">
+<br><br>
+<button onclick="next1()">Continue</button>
+</div>
+
+</div>
+
+<script>
+
+let tries=0;
+let user="";
+
+function next1(){
+user=document.getElementById("name").value;
+if(user==""){
+alert("Please enter your name.");
+return;
+}
+
+document.getElementById("box").innerHTML=`
+<h2>Hello ${user} ❤️</h2>
+<p>Are you angry with me? 🥺</p>
+<button class="yes" onclick="sorry()">Yes</button>
+<button class="no" onclick="sorry()">No</button>
+`;
+}
+
+function sorry(){
+showSorry();
+}
+
+function showSorry(){
+
+const msgs=[
+"Please forgive me 🥺",
+"I am really sorry ❤️",
+"I promise I won't repeat it 😔",
+"You are very special to me 💖",
+"Please maan jao na 🥹"
+];
+
+let msg=msgs[Math.min(tries,msgs.length-1)];
+
+document.getElementById("box").innerHTML=`
+<h2>${msg}</h2>
+
+<button class="yes" onclick="forgive()">I Forgive You ❤️</button>
+
+<button class="no" onclick="again()">Not Yet 😒</button>
+`;
+
+}
+
+function again(){
+tries++;
+showSorry();
+}
+
+function forgive(){
+
+document.getElementById("box").innerHTML=`
+<h1>🥹❤️</h1>
+<h2>Pakka... Ab maan gayi? ❤️</h2>
+<p>Thank You Cutieee 💖</p>
+<h3>I Promise I'll Always Respect You 🌸</h3>
+`;
+
+}
+
+</script>
+
+</body>
+</html>
